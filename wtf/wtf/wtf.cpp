@@ -359,7 +359,7 @@ private:
 	IDirectSound8* m_DirectSound;
 	IDirectSoundBuffer* m_primaryBuffer;
 
-	//Note that I only have one secondary buffer as this tutorial only loads in one sound.
+	// I only have one secondary buffer, only load one sound.
 	IDirectSoundBuffer8* m_secondaryBuffer1;
 };
 
