@@ -18,6 +18,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListView>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -25,36 +26,59 @@ QT_BEGIN_NAMESPACE
 class Ui_AddAction
 {
 public:
-    QPushButton *button_add;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
+    QListView *listView;
+    QLabel *label_2;
     QLineEdit *lineEdit_command;
     QLabel *label;
     QLineEdit *lineEdit_path;
-    QLabel *label_2;
-    QListView *listView;
+    QPushButton *button_add;
 
     void setupUi(QWidget *AddAction)
     {
         if (AddAction->objectName().isEmpty())
             AddAction->setObjectName(QStringLiteral("AddAction"));
         AddAction->resize(405, 278);
-        button_add = new QPushButton(AddAction);
-        button_add->setObjectName(QStringLiteral("button_add"));
-        button_add->setGeometry(QRect(290, 210, 75, 23));
-        lineEdit_command = new QLineEdit(AddAction);
-        lineEdit_command->setObjectName(QStringLiteral("lineEdit_command"));
-        lineEdit_command->setGeometry(QRect(112, 170, 151, 20));
-        label = new QLabel(AddAction);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(50, 170, 61, 21));
-        lineEdit_path = new QLineEdit(AddAction);
-        lineEdit_path->setObjectName(QStringLiteral("lineEdit_path"));
-        lineEdit_path->setGeometry(QRect(112, 210, 151, 20));
-        label_2 = new QLabel(AddAction);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(50, 210, 61, 21));
-        listView = new QListView(AddAction);
+        verticalLayoutWidget = new QWidget(AddAction);
+        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(30, 20, 341, 231));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        verticalLayout->setContentsMargins(15, 8, 15, 10);
+        listView = new QListView(verticalLayoutWidget);
         listView->setObjectName(QStringLiteral("listView"));
-        listView->setGeometry(QRect(50, 10, 321, 151));
+
+        verticalLayout->addWidget(listView);
+
+        label_2 = new QLabel(verticalLayoutWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+
+        verticalLayout->addWidget(label_2);
+
+        lineEdit_command = new QLineEdit(verticalLayoutWidget);
+        lineEdit_command->setObjectName(QStringLiteral("lineEdit_command"));
+
+        verticalLayout->addWidget(lineEdit_command);
+
+        label = new QLabel(verticalLayoutWidget);
+        label->setObjectName(QStringLiteral("label"));
+
+        verticalLayout->addWidget(label);
+
+        lineEdit_path = new QLineEdit(verticalLayoutWidget);
+        lineEdit_path->setObjectName(QStringLiteral("lineEdit_path"));
+
+        verticalLayout->addWidget(lineEdit_path);
+
+        button_add = new QPushButton(verticalLayoutWidget);
+        button_add->setObjectName(QStringLiteral("button_add"));
+
+        verticalLayout->addWidget(button_add);
+
 
         retranslateUi(AddAction);
 
@@ -64,9 +88,9 @@ public:
     void retranslateUi(QWidget *AddAction)
     {
         AddAction->setWindowTitle(QApplication::translate("AddAction", "Add Voice Action", 0));
-        button_add->setText(QApplication::translate("AddAction", "Add Action", 0));
-        label->setText(QApplication::translate("AddAction", "Command:", 0));
         label_2->setText(QApplication::translate("AddAction", "Path to file:", 0));
+        label->setText(QApplication::translate("AddAction", "Command:", 0));
+        button_add->setText(QApplication::translate("AddAction", "Add Action", 0));
     } // retranslateUi
 
 };

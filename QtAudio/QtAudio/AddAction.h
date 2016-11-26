@@ -1,9 +1,11 @@
 #pragma once
 
-#include <QWidget>
+#include <qmainwindow.h>
 #include "ui_AddAction.h"
+#include <vector>
+#include "VoiceAction.h"
 
-class AddAction : public QWidget
+class AddAction : public QMainWindow
 {
 	Q_OBJECT
 
@@ -12,4 +14,6 @@ public:
 	~AddAction();
 private:
 	Ui::AddAction ui;
+public slots:
+	void updateList(std::vector<VoiceAction>* commands);
 };

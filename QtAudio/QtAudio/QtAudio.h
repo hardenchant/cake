@@ -13,11 +13,11 @@
 #include <qmessagebox.h>
 
 #include <string>
+#include <fstream>
 
 #include "recog.h"
 #include "AddAction.h"
 #include "VoiceAction.h"
-#include <fstream>
 
 class QtAudio : public QMainWindow
 {
@@ -41,10 +41,12 @@ public slots:
 	void onPushButton_stopRecord();
 	void onPushButton_recognize();
 	void stopAndRecognize();
-	void addVoiceActions();
+	void onPushButton_sendCommands();
 private:
 	size_t write_response_data(char *ptr, size_t size, size_t nmemb, void *userdata);
 	size_t read_request_data(char *ptr, size_t size, size_t nmemb, void *userdata);
 	void set_audio_config();
 	void loadFileCfg();
+signals:
+	void sendCommands(std::vector<VoiceAction>*);
 };

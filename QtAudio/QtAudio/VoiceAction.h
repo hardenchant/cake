@@ -10,6 +10,7 @@ class VoiceAction
 public:
 	VoiceAction(string name, string path, string words);
 	string command();
+	string getName();
 private:
 	string name;
 	string pathToFile;

@@ -24,3 +24,7 @@ string VoiceAction::command() {
 		return "explorer " + pathToFile;
 	}
 }
+
+string VoiceAction::getName() {
+	return name;
+}

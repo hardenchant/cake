@@ -10,16 +10,19 @@ QtAudio::QtAudio(QWidget *parent)
 
 	auto menu_settings = ui.menuBar->addMenu("Settings");
 	
-	auto action_addaction = menu_settings->addAction("Add voice action");
-	connect(action_addaction, SIGNAL(triggered()), &addact_wnd, SLOT(show()));
 	
-	menu_settings->addAction(action_addaction);
+	auto action_addaction = menu_settings->addAction("Add voice action");
+
+	connect(action_addaction, SIGNAL(triggered()), this, SLOT(onPushButton_sendCommands()));
+	connect(this, SIGNAL(sendCommands(std::vector<VoiceAction>*)), &addact_wnd, SLOT(updateList(std::vector<VoiceAction>*)));
+	//menu_settings->addAction(action_addaction);
 	//QString program_arg1("explorer \"C:\\file.docx\"");
 
 	//QString program_path("\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\"");
 	//QProcess *myproc = new QProcess(this);
 	//myproc->start(program_arg1);
 	loadFileCfg();
+	
 }
 void QtAudio::set_audio_config() {
 	audioFilePath = QApplication::applicationDirPath() + "/speech.wav";
@@ -104,9 +107,6 @@ void QtAudio::stopAndRecognize() {
 	onPushButton_recognize();
 }
 
-void QtAudio::addVoiceActions() {
-	
-}
 // FILE ENCODING IS UTF8
 void QtAudio::loadFileCfg() {
 	QString qs = QApplication::applicationDirPath() + "/data.txt";
@@ -124,4 +124,8 @@ void QtAudio::loadFileCfg() {
 		std::getline(file, name);
 	}
 	file.close();
+}
+
+void QtAudio::onPushButton_sendCommands() {
+	emit sendCommands(&commands);
 }
