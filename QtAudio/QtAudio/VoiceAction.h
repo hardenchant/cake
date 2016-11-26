@@ -11,6 +11,8 @@ public:
 	VoiceAction(string name, string path, string words);
 	string command();
 	string getName();
+	string getPath();
+	std::vector<string> getWords();
 private:
 	string name;
 	string pathToFile;

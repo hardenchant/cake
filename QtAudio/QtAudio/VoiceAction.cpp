@@ -28,3 +28,10 @@ string VoiceAction::command() {
 string VoiceAction::getName() {
 	return name;
 }
+
+string VoiceAction::getPath() {
+	return pathToFile;
+}
+std::vector<string> VoiceAction::getWords() {
+	return associateWords;
+}

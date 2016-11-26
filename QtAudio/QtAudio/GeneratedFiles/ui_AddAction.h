@@ -81,6 +81,7 @@ public:
 
 
         retranslateUi(AddAction);
+        QObject::connect(listView, SIGNAL(clicked(QModelIndex)), AddAction, SLOT(chooseCom(QModelIndex)));
 
         QMetaObject::connectSlotsByName(AddAction);
     } // setupUi

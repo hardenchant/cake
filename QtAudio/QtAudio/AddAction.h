@@ -1,8 +1,13 @@
 #pragma once
 
 #include <qmainwindow.h>
-#include "ui_AddAction.h"
+#include <qstringlistmodel.h>
+#include <qtableview.h>
+#include <qmessagebox.h>
+
 #include <vector>
+
+#include "ui_AddAction.h"
 #include "VoiceAction.h"
 
 class AddAction : public QMainWindow
@@ -14,6 +19,9 @@ public:
 	~AddAction();
 private:
 	Ui::AddAction ui;
+	QAbstractItemModel *model;
+	std::vector<VoiceAction>* commands;
 public slots:
-	void updateList(std::vector<VoiceAction>* commands);
+	void updateList(std::vector<VoiceAction>*);
+	void chooseCom(QModelIndex);
 };

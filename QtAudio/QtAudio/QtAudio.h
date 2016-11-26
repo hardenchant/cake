@@ -41,7 +41,6 @@ public slots:
 	void onPushButton_stopRecord();
 	void onPushButton_recognize();
 	void stopAndRecognize();
-	void onPushButton_sendCommands();
 private:
 	size_t write_response_data(char *ptr, size_t size, size_t nmemb, void *userdata);
 	size_t read_request_data(char *ptr, size_t size, size_t nmemb, void *userdata);

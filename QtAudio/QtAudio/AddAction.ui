@@ -73,5 +73,25 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>listView</sender>
+   <signal>clicked(QModelIndex)</signal>
+   <receiver>AddAction</receiver>
+   <slot>chooseCom(QModelIndex)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>200</x>
+     <y>74</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>202</x>
+     <y>138</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>chooseCom(QModelIndex)</slot>
+ </slots>
 </ui>
