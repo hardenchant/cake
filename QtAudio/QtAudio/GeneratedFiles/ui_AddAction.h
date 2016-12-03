@@ -29,20 +29,22 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QListView *listView;
+    QLabel *label_3;
+    QLineEdit *lineEdit_name;
     QLabel *label_2;
-    QLineEdit *lineEdit_command;
-    QLabel *label;
     QLineEdit *lineEdit_path;
+    QLabel *label;
+    QLineEdit *lineEdit_command;
     QPushButton *button_add;
 
     void setupUi(QWidget *AddAction)
     {
         if (AddAction->objectName().isEmpty())
             AddAction->setObjectName(QStringLiteral("AddAction"));
-        AddAction->resize(405, 278);
+        AddAction->resize(405, 407);
         verticalLayoutWidget = new QWidget(AddAction);
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(30, 20, 341, 231));
+        verticalLayoutWidget->setGeometry(QRect(30, 20, 341, 361));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
@@ -54,25 +56,35 @@ public:
 
         verticalLayout->addWidget(listView);
 
+        label_3 = new QLabel(verticalLayoutWidget);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        verticalLayout->addWidget(label_3);
+
+        lineEdit_name = new QLineEdit(verticalLayoutWidget);
+        lineEdit_name->setObjectName(QStringLiteral("lineEdit_name"));
+
+        verticalLayout->addWidget(lineEdit_name);
+
         label_2 = new QLabel(verticalLayoutWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
 
         verticalLayout->addWidget(label_2);
 
-        lineEdit_command = new QLineEdit(verticalLayoutWidget);
-        lineEdit_command->setObjectName(QStringLiteral("lineEdit_command"));
+        lineEdit_path = new QLineEdit(verticalLayoutWidget);
+        lineEdit_path->setObjectName(QStringLiteral("lineEdit_path"));
 
-        verticalLayout->addWidget(lineEdit_command);
+        verticalLayout->addWidget(lineEdit_path);
 
         label = new QLabel(verticalLayoutWidget);
         label->setObjectName(QStringLiteral("label"));
 
         verticalLayout->addWidget(label);
 
-        lineEdit_path = new QLineEdit(verticalLayoutWidget);
-        lineEdit_path->setObjectName(QStringLiteral("lineEdit_path"));
+        lineEdit_command = new QLineEdit(verticalLayoutWidget);
+        lineEdit_command->setObjectName(QStringLiteral("lineEdit_command"));
 
-        verticalLayout->addWidget(lineEdit_path);
+        verticalLayout->addWidget(lineEdit_command);
 
         button_add = new QPushButton(verticalLayoutWidget);
         button_add->setObjectName(QStringLiteral("button_add"));
@@ -82,6 +94,8 @@ public:
 
         retranslateUi(AddAction);
         QObject::connect(listView, SIGNAL(clicked(QModelIndex)), AddAction, SLOT(chooseCom(QModelIndex)));
+        QObject::connect(listView, SIGNAL(entered(QModelIndex)), AddAction, SLOT(changeValue(QModelIndex)));
+        QObject::connect(button_add, SIGNAL(clicked()), AddAction, SLOT(addEditAction()));
 
         QMetaObject::connectSlotsByName(AddAction);
     } // setupUi
@@ -89,9 +103,10 @@ public:
     void retranslateUi(QWidget *AddAction)
     {
         AddAction->setWindowTitle(QApplication::translate("AddAction", "Add Voice Action", 0));
+        label_3->setText(QApplication::translate("AddAction", "Command name:", 0));
         label_2->setText(QApplication::translate("AddAction", "Path to file:", 0));
-        label->setText(QApplication::translate("AddAction", "Command:", 0));
-        button_add->setText(QApplication::translate("AddAction", "Add Action", 0));
+        label->setText(QApplication::translate("AddAction", "Associative words:", 0));
+        button_add->setText(QApplication::translate("AddAction", "Choose action before editing", 0));
     } // retranslateUi
 
 };

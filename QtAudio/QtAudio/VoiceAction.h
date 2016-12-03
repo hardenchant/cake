@@ -13,6 +13,7 @@ public:
 	string getName();
 	string getPath();
 	std::vector<string> getWords();
+	void copy(VoiceAction obj);
 private:
 	string name;
 	string pathToFile;

@@ -11,6 +11,7 @@
 #include <qdir.h>
 #include <qprocess.h>
 #include <qmessagebox.h>
+#include <qstring.h>
 
 #include <string>
 #include <fstream>
@@ -41,6 +42,7 @@ public slots:
 	void onPushButton_stopRecord();
 	void onPushButton_recognize();
 	void stopAndRecognize();
+	void showDebugOptions(int check);
 private:
 	size_t write_response_data(char *ptr, size_t size, size_t nmemb, void *userdata);
 	size_t read_request_data(char *ptr, size_t size, size_t nmemb, void *userdata);

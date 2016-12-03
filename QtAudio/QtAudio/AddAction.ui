@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>405</width>
-    <height>278</height>
+    <height>407</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>30</x>
      <y>20</y>
      <width>341</width>
-     <height>231</height>
+     <height>361</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -42,6 +42,16 @@
      <widget class="QListView" name="listView"/>
     </item>
     <item>
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Command name:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_name"/>
+    </item>
+    <item>
      <widget class="QLabel" name="label_2">
       <property name="text">
        <string>Path to file:</string>
@@ -49,22 +59,22 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit_command"/>
+     <widget class="QLineEdit" name="lineEdit_path"/>
     </item>
     <item>
      <widget class="QLabel" name="label">
       <property name="text">
-       <string>Command:</string>
+       <string>Associative words:</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit_path"/>
+     <widget class="QLineEdit" name="lineEdit_command"/>
     </item>
     <item>
      <widget class="QPushButton" name="button_add">
       <property name="text">
-       <string>Add Action</string>
+       <string>Choose action before editing</string>
       </property>
      </widget>
     </item>
@@ -90,8 +100,42 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>listView</sender>
+   <signal>entered(QModelIndex)</signal>
+   <receiver>AddAction</receiver>
+   <slot>changeValue(QModelIndex)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>200</x>
+     <y>74</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>202</x>
+     <y>138</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_add</sender>
+   <signal>clicked()</signal>
+   <receiver>AddAction</receiver>
+   <slot>addEditAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>200</x>
+     <y>359</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>202</x>
+     <y>203</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>chooseCom(QModelIndex)</slot>
+  <slot>changeValue(QModelIndex)</slot>
+  <slot>addEditAction()</slot>
  </slots>
 </ui>

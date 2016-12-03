@@ -3,7 +3,7 @@
 VoiceAction::VoiceAction(string name, string path, string words)
 {
 	this->name = name;
-	(path.find(".exe") == string::npos) ? exe = true : exe = false;
+	(path.find(".exe") == string::npos) ? exe = false : exe = true;
 	pathToFile = path;
 	size_t separator1 = 0;
 	auto separator2 = words.find(';');
@@ -15,13 +15,20 @@ VoiceAction::VoiceAction(string name, string path, string words)
 	}
 }
 
+void VoiceAction::copy(VoiceAction obj) {
+	name = obj.name;
+	pathToFile = obj.pathToFile;
+	exe = obj.exe;
+	associateWords = obj.associateWords;
+}
+
 string VoiceAction::command() {
 	if (exe) {
-		return pathToFile;
+		return "\"" + pathToFile + "\"";
 	}
 	else
 	{
-		return "explorer " + pathToFile;
+		return "explorer.exe " + pathToFile;
 	}
 }
 

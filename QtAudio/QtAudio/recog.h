@@ -6,7 +6,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include <qapplication.h>
+
 
 namespace mr {
 	size_t read_request_data(char *ptr, size_t size, size_t nmemb, void *userdata);
